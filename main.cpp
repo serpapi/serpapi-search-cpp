@@ -43,7 +43,7 @@ int main()
     std::map<string, string> parameter;
     parameter["q"] = "coffee";
     parameter["location"] = "Austin,TX";
-    char* env_p = std::getenv("API_KEY");
+    const char* env_p = std::getenv("API_KEY");
     std::string apiKey(env_p);
     std::string engine = "google";
     

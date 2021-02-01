@@ -72,7 +72,7 @@ string SerpApiSearch::GetHtml()
    return getRawResult("/search", GetParameter(false));
 }
 
-string SerpApiSearch::getRawResult(string uri, string parameter) 
+string SerpApiSearch::getRawResult(string uri, string parameter)
 {
    curl_global_init(CURL_GLOBAL_DEFAULT);
    curl = curl_easy_init();
