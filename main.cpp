@@ -10,7 +10,7 @@
 #include <homedepotsearch.cpp>
 #include <yahoosearch.cpp>
 #include <yandexsearch.cpp>
-#include <wallmartsearch.cpp>
+#include <walmartsearch.cpp>
 #include <youtubesearch.cpp>
 #include <linkedinsearch.cpp>
 
