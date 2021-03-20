@@ -7,7 +7,7 @@ task :default do
         'googlesearch.hpp',
     ]
     source = 'google'
-    names = %w(bing baidu homedepot yahoo yandex wallmart youtube linkedin)
+    names = %w(bing baidu homedepot yahoo yandex walmart youtube linkedin)
     names.each do |name|
         files.each do |fn|
             buf = File.read(fn)
