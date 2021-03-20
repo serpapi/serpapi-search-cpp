@@ -1,0 +1,23 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: conanio/gcc10
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: make install_linux
+      run: make install_linux
+    - name: make reset
+      run: make reset
+    - name: make all
+      run: make all
+      env:
+        API_KEY: ${{secrets.API_KEY}}
