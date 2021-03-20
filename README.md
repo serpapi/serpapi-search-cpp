@@ -5,6 +5,15 @@ The backend is powered by serpapi.com and required an account
 
 Current Status: `draft`
 
+## Run with Docker
+
+```bash
+env API_KEY=API_KEY docker run --rm -it -e API_KEY --workdir /tmp/serpapi -v $PWD:/tmp/serpapi conanio/gcc10 make install_linux reset all
+```
+
+This will use https://hub.docker.com/layers/conanio/gcc10 image instead
+of creating our own image for compilation on Linux.
+
 ## Get started.
  - Set an environment API_KEY=<secret>
  - Install dependency either apple or linux tested.
