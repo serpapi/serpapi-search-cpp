@@ -5,9 +5,16 @@ app_name=main
 
 all: build run
 	
+# initialize meson build
+init:
+	-rm -rf build/
+	meson setup build
+
+# build application
 build:
 	meson compile -C build -v
 
+# run application
 run:
 	./build/serpapi-search-cpp
 
@@ -19,7 +26,3 @@ install_linux:
 # tested on Apple M1 aarch64
 install_apple:
 	brew install meson pkg-config curl cmake meson ninja rapidjson
-
-reset:
-	-rm -rf build/
-	meson setup build

@@ -1,5 +1,5 @@
-require 'erb'
-
+# automatic class generations
+# 
 task :default do
     puts 'automatic class creation'
     files = [
