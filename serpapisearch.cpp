@@ -120,5 +120,5 @@ Document SerpApiSearch::getJsonResult(string uri, string parameter)
 Document SerpApiSearch::GetSearchArchive(string searchID) 
 {
    return SerpApiSearch::getJsonResult("/searches/" + searchID + ".json", SerpApiSearch::GetParameter(true));
-};
-};
+}
+}
