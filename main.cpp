@@ -3,16 +3,7 @@
 #include <memory>
 #include <string>
 #include <curl/curl.h>
-#include <serpapisearch.hpp>
-#include <googlesearch.cpp>
-#include <bingsearch.cpp>
-#include <baidusearch.cpp>
-#include <homedepotsearch.cpp>
-#include <yahoosearch.cpp>
-#include <yandexsearch.cpp>
-#include <walmartsearch.cpp>
-#include <youtubesearch.cpp>
-#include <linkedinsearch.cpp>
+#include <serpapi.hpp>
 
 #include "rapidjson/document.h"
 #include "rapidjson/writer.h"
@@ -40,36 +31,29 @@ void info(const Document& document) {
 // RapidJSON parser documentation is available: https://rapidjson.org
 int main()
 {
+    // initialize a client
+    const char* env_p = std::getenv("API_KEY");
+    std::string apiKey(env_p);
+    std::map<string, string> default_parameter;
+    default_parameter["api_key"] = apiKey;
+    default_parameter["engine"] = "google";
+    
+    // using namespace serpapi;
+    serpapi::Client client(default_parameter);
+
+    // execute search 
     std::map<string, string> parameter;
     parameter["q"] = "coffee";
     parameter["location"] = "Austin,TX";
-    const char* env_p = std::getenv("API_KEY");
-    std::string apiKey(env_p);
-    std::string engine = "google";
-    
-    // using namespace serpapi;
-    //serpapi::GoogleSearch search(parameter, apiKey);
-    serpapi::BingSearch search(parameter, apiKey);
-    // serpapi::BaiduSearch search(parameter, apiKey);
-    // serpapi::HomedepotSearch search(parameter, apiKey);
-    // serpapi::YahooSearch search(parameter, apiKey);
-    // serpapi::YandexSearch search(parameter, apiKey);
-    // serpapi::WallmartSearch search(parameter, apiKey);
-    // serpapi::YoutubeSearch search(parameter, apiKey);
-    // serpapi::LinkedinSearch search(parameter, apiKey);
-
-    // search on any search engine available from serpapi
-    //serpapi::SerpApiSearch search(parameter, apiKey, "bing");
-
-    // using namespace rapidjson;
-    rapidjson::Document d = search.GetJson();
+    //  using namespace rapidjson;
+    rapidjson::Document d = client.search(parameter);
     info("document loaded");
     assert(d.HasMember("search_metadata"));
     assert(d["search_metadata"]["status"] == "Success");
     assert(d["search_metadata"]["id"].IsString());
+
     string id = d["search_metadata"]["id"].GetString();
-    search.GetSearchArchive(id);
+    client.searchArchive(id);
     assert(d["search_metadata"]["status"] == "Success");
-    //info(d["search_information"]["total_results"].GetDouble());
     info(d);
 }

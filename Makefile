@@ -1,7 +1,3 @@
-file_set=$(wildcard *.cpp)
-app_name=main
-
-.PHONY: build
 
 all: build run
 	
@@ -17,7 +13,7 @@ build:
 
 # run application
 run:
-	./build/serpapi-search-cpp
+	./build/serpapi-cpp
 
 # tested on AARCH64 and x86
 install_linux:
