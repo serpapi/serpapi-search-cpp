@@ -15,10 +15,11 @@ using namespace rapidjson;
 using namespace std;
 
 void info(string msg) {
-    cout << "\nINFO: " << msg << endl;
+    cout << "\nINFO: " << msg;
 }
+
 void info(double msg) {
-    cout << "\nINFO: " << msg << endl;
+    cout << "\nINFO: " << msg;
 }
 
 void info(const Document& document) {
@@ -42,18 +43,29 @@ int main()
     serpapi::Client client(default_parameter);
 
     // execute search 
-    std::map<string, string> parameter;
-    parameter["q"] = "coffee";
+    map<string, string> parameter;
+    parameter["c"] = "coffee";
     parameter["location"] = "Austin,TX";
     //  using namespace rapidjson;
-    rapidjson::Document d = client.search(parameter);
+    Document d = client.search(parameter);
     info("document loaded");
+    info(d);
+    info("check content");
+    return 0;
+    assert(!d.HasMember("error"));
     assert(d.HasMember("search_metadata"));
     assert(d["search_metadata"]["status"] == "Success");
+    info(" search_metadata:");
+    string status = d["search_metadata"]["status"].GetString();
+    info("   status: " + status);
     assert(d["search_metadata"]["id"].IsString());
-
     string id = d["search_metadata"]["id"].GetString();
+    info("   id: " + id);
+
+    info("search archive with id: " + id);
     client.searchArchive(id);
     assert(d["search_metadata"]["status"] == "Success");
-    info(d);
+    info(" found.");
+    info(" test passed.");
+    return 0;
 }

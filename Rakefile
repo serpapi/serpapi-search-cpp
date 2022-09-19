@@ -17,7 +17,8 @@ end
 
 # run application
 task :run do
-	sh('./build/serpapi-cpp')
+	sh('./build/example/google_example')
+	sh('./build/oobt/oobt')
 end
 
 # tested on AARCH64 and x86

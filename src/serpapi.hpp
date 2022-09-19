@@ -16,6 +16,8 @@ namespace serpapi
 using namespace rapidjson;
 using namespace std;
 
+struct GetResponse;
+
 class Client {
 
     map<string, string> parameter;
@@ -40,7 +42,7 @@ class Client {
 
     string url(string output, map<string, string> parameter);
 
-    string get(string uri, string output, map<string, string> parameter);
+    GetResponse get(string uri, string output, map<string, string> parameter);
 };
 }
 

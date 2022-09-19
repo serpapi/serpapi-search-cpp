@@ -4,6 +4,7 @@
 #include <string>
 #include <curl/curl.h>
 #include <serpapi.hpp>
+#include <helper.hpp>
 
 #include "rapidjson/document.h"
 #include "rapidjson/writer.h"
@@ -13,20 +14,6 @@
 
 using namespace rapidjson;
 using namespace std;
-
-void info(string msg) {
-    cout << "\nINFO: " << msg << endl;
-}
-void info(double msg) {
-    cout << "\nINFO: " << msg << endl;
-}
-
-void info(const Document& document) {
-    StringBuffer buffer;
-    PrettyWriter<StringBuffer> writer(buffer);
-    document.Accept(writer);
-    cout << "\nINFO: " << buffer.GetString();
-}
 
 // RapidJSON parser documentation is available: https://rapidjson.org
 int main()

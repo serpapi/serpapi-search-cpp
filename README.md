@@ -37,3 +37,5 @@ of creating our own image for compilation on Linux.
  - [ ] Add REPL.it example
  - [ ] Add integration documentation on serpapi.com
  - [ ] Write a full README to match  serpapi-search-results-dotnet
+
+https://rapidjson.org/md_doc_tutorial.html
