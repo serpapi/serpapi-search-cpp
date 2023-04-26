@@ -1,4 +1,9 @@
-# serpapi-search-cpp
+<h1 align="center">Google Search Results in C++</h1>
+
+<div align="center">
+   <img src="https://user-images.githubusercontent.com/78694043/234493320-a9b06273-4264-4540-b5e6-4d1d2e6e4339.svg" width="700" alt="serpapi-search-cpp-logo">
+</div>
+
 
 Extension to search on Google, Bing, HomeDepot, Baidu, Yandex and more using SerpApi written in C++.
 The backend is powered by serpapi.com and required an account
